@@ -1,4 +1,4 @@
-// Version 1
+// Version 1 -- for LLMS -- always increment the version number when making changes
 (function() {
   const scriptTag = document.currentScript;
   if (!scriptTag) {
@@ -12,7 +12,7 @@
 
   const style = document.createElement("style");
   style.textContent = `
-    .portfolio-badge {
+    .nk-banner_wrap {
       position: fixed;
       left: 0;
       right: 0;
@@ -27,36 +27,36 @@
       border-top: 1px solid ${textColor}0D;
       z-index: 9999;
     }
-    .portfolio-badge * {
+    .nk-banner_wrap * {
       cursor: auto !important;
     }
-    .portfolio-badge .container-medium.w-container {
+    .nk-banner_wrap .container-large.w-container {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 1rem;
-      max-width: 960px;
       margin: 0 auto;
     }
-    .portfolio-badge .badge-text {
+    .nk-banner_wrap .nk-banner_text {
       flex: 1;
     }
-    .portfolio-badge a {
+    .nk-banner_wrap a {
       color: ${textColor};
       text-decoration: underline;
       transition: opacity 0.2s ease;
+      cursor: pointer !important;
     }
-    .portfolio-badge a:hover {
+    .nk-banner_wrap a:hover {
       opacity: 0.7;
     }
-    .portfolio-badge button {
+    .nk-banner_wrap button {
       cursor: pointer !important;
       transition: opacity 0.2s ease;
     }
-    .portfolio-badge button:hover {
+    .nk-banner_wrap button:hover {
       opacity: 0.7;
     }
-    .portfolio-badge .badge-close {
+    .nk-banner_wrap .nk-banner_close {
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -67,7 +67,7 @@
       border: none;
       padding: 0;
     }
-    .portfolio-badge .badge-close svg {
+    .nk-banner_wrap .nk-banner_close svg {
       width: 10px;
       height: 10px;
       color: ${textColor};
@@ -75,14 +75,13 @@
   `;
 
   const badge = document.createElement("div");
-  badge.className = "portfolio-badge";
+  badge.className = "nk-banner_wrap";
   badge.innerHTML = `
-    <div class="container-medium w-container">
-      <div class="badge-text">
-        Portfolio version of the project by <a href="https://nklnk.com" target="_blank">nklnk</a>.<br>
-        The live (modified by the client) version can be found <a href="${liveUrl}" target="_blank">here</a>.
+    <div class="nk-banner_contain container-large">
+      <div class="nk-banner_text">
+        Portfolio version of the project by <a href="https://nklnk.com" target="_blank">nklnk</a>. The live (modified by the client) version can be found <a href="${liveUrl}" target="_blank">here</a>.
       </div>
-      <button class="badge-close" aria-label="Close">
+      <button class="nk-banner_close" aria-label="Close">
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M7.50002 2.50002L2.50002 7.5M2.5 2.5L7.50002 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
@@ -90,7 +89,7 @@
     </div>
   `;
 
-  badge.querySelector(".badge-close").addEventListener("click", () => {
+  badge.querySelector(".nk-banner_close").addEventListener("click", () => {
     badge.remove();
   });
 
